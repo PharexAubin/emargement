@@ -1,0 +1,48 @@
+﻿@using ApiPointeur.Models;
+@{
+    var ListeEleve = ViewData["Eleves"] as List<Eleve>;
+}
+
+
+
+<h2>liste de presence</h2>
+
+
+<table class="table table-sm table-striped table-bordered m-2" id="client">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Id")</th>
+            <th>@Html.DisplayName("Nom")</th>
+            <th>@Html.DisplayName("Prenom")</th>
+            <th>@Html.DisplayName("Telephone")</th>
+            <th>@Html.DisplayName("Email")</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Eleve row in ListeEleve)
+        {
+            <tr>
+
+                <td>@row.Id</td>
+                <td>@row.Nom</td>
+                <td>@row.Prenom</td>
+                <td>@row.Telephone</td>
+                <td>@row.Email</td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    $(document).ready(function () {
+        $('#client').DataTable();
+    });
+
+</script>

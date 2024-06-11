@@ -1,0 +1,104 @@
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mdeleted file mode 100644[m
+[1mindex 639453b..0000000[m
+[1m--- a/.gitignore[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-.vs/ [m
+[1mdiff --git a/ListpresenceMvc/Controllers/HomeController.cs b/ListpresenceMvc/Controllers/HomeController.cs[m
+[1mdeleted file mode 100644[m
+[1mindex a546e6c..0000000[m
+[1m--- a/ListpresenceMvc/Controllers/HomeController.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,58 +0,0 @@[m
+[31m-﻿using ApiPointeur.Models;[m
+[31m-using ListpresenceMvc.Models;[m
+[31m-using Microsoft.AspNetCore.Mvc;[m
+[31m-using Newtonsoft.Json;[m
+[31m-using System.Diagnostics;[m
+[31m-using System.Linq;[m
+[31m-[m
+[31m-namespace ListpresenceMvc.Controllers[m
+[31m-{[m
+[31m-    public class HomeController : Controller[m
+[31m-    {[m
+[31m-        private readonly ILogger<HomeController> _logger;[m
+[31m-[m
+[31m-        public HomeController(ILogger<HomeController> logger)[m
+[31m-        {[m
+[31m-            _logger = logger;[m
+[31m-        }[m
+[31m-[m
+[31m-        public IActionResult Index()[m
+[31m-        {[m
+[31m-            return View();[m
+[31m-        }[m
+[31m-[m
+[31m-        public IActionResult Privacy()[m
+[31m-        {[m
+[31m-            return View();[m
+[31m-        }[m
+[31m-        public IActionResult Classe()[m
+[31m-        {[m
+[31m-            return View();[m
+[31m-        }[m
+[31m-        public async Task<IActionResult> Etudiant()[m
+[31m-        {[m
+[31m-            List<Eleve> Eleves = new List<Eleve>();[m
+[31m-            using (var httpClient = new HttpClient())[m
+[31m-            {[m
+[31m-                using (var response = await httpClient.GetAsync("https://localhost:7295/api/Eleves"))[m
+[31m-                {[m
+[31m-                    string apiResponse = await response.Content.ReadAsStringAsync();[m
+[31m-                    Eleves = JsonConvert.DeserializeObject<List<Eleve>>(apiResponse);[m
+[31m-                }[m
+[31m-            }[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-            ViewData["Eleves"] = Eleves;[m
+[31m-            return View();[m
+[31m-        }[m
+[31m-[m
+[31m-[m
+[31m-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)][m
+[31m-        public IActionResult Error()[m
+[31m-        {[m
+[31m-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });[m
+[31m-        }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/ListpresenceMvc/ListpresenceMvc.csproj b/ListpresenceMvc/ListpresenceMvc.csproj[m
+[1mdeleted file mode 100644[m
+[1mindex b336505..0000000[m
+[1m--- a/ListpresenceMvc/ListpresenceMvc.csproj[m
+[1m+++ /dev/null[m
+[36m@@ -1,25 +0,0 @@[m
+[31m-﻿<Project Sdk="Microsoft.NET.Sdk.Web">[m
+[31m-[m
+[31m-  <PropertyGroup>[m
+[31m-    <TargetFramework>net7.0</TargetFramework>[m
+[31m-    <Nullable>enable</Nullable>[m
+[31m-    <ImplicitUsings>enable</ImplicitUsings>[m
+[31m-  </PropertyGroup>[m
+[31m-[m
+[31m-  <ItemGroup>[m
+[31m-    <PackageReference Include="jQuery" Version="3.7.0" />[m
+[31m-    <PackageReference Include="jquery.datatables" Version="1.10.15" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">[m
+[31m-      <PrivateAssets>all</PrivateAssets>[m
+[31m-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>[m
+[31m-    </PackageReference>[m
+[31m-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />[m
+[31m-  </ItemGroup>[m
+[31m-[m
+[31m-  <ItemGroup>[m
+[31m-    <ProjectReference Include="..\..\ApiPointeur\ApiPointeur.csproj" />[m
+[31m-  </ItemGroup>[m
+[31m-[m
+[31m-</Project>[m
+[1mdiff --git a/ListpresenceMvc/ListpresenceMvc.csproj.user b/ListpresenceMvc/Listp
